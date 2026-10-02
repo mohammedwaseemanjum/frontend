@@ -1,12 +1,41 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer';
 import { persist } from 'zustand/middleware'
+import type { WritableDraft } from 'immer';
+
+interface Media {
+  collection: string;
+  customProperties: any;
+  fileName: string;
+  id: number;
+  modelableId: string;
+  modelableType: string;
+  name: string;
+}
+
+interface MetaData {
+  addressOne: string;
+  addressTwo: string;
+  barangay: string;
+  city: string;
+  province: string;
+  region: string;
+  storeName: string;
+  storePhone: number;
+  zip: number
+}
+
+interface Merchant {
+  media: Array<Media>
+  metaData: MetaData
+  createdAt: string;
+}
 
 interface User {
   id?: number;
   name?: string;
   email?: string;
-  merchant?: any
+  merchant?: Merchant
 }
 
 interface UserStateI {
@@ -28,8 +57,8 @@ export const useUserStore = create<UserStateI>()(
       },
       setMerchant:<T> (merchant: T) => {
         set((state) => {
-          if (state.user) {
-            state.user.merchant = merchant
+          if (state.user && merchant) {
+            state.user.merchant = merchant as WritableDraft<Merchant>;
           }
         })
       }

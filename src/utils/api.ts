@@ -10,7 +10,7 @@ import humps from 'humps';
 import { useLoaderStore } from "@/stores/loader";
 
   const api: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || 'https://backend-core-laravel.test/api',
+    baseURL: import.meta.env.VITE_API_BASE_URL,
     withCredentials: true,
     headers: {
       'Accept': 'application/json',
