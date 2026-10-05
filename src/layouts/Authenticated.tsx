@@ -8,8 +8,7 @@ import TopBar from '@/layouts/topbar';
 const Authenticated: React.FC = () => {
     const { user } = useUserStore(
         useShallow((state) => ({
-            user: state.user,
-            setUser: state.setUser,
+            user: state.user
         }))
     )
 

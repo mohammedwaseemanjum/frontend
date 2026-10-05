@@ -32,7 +32,9 @@ const useLoginAction = () => {
 
     const onSubmit:SubmitHandler<FormFields>= (data) => {
         api.post('login', data).then((res: AxiosResponse<LoginI>) => {
-            setUser(res.data)
+            if (res.data.merchant) {
+                setUser(res.data)
+            }
             login()
             navigate('/')
         })
