@@ -13,12 +13,9 @@ const Profile = () => {
     )
 
     const { data } = useQuery({
-  //    ^? const data: number | undefined
-  queryKey: ['test'],
-  queryFn: () => Promise.resolve(5),
-})
-
-console.log(data)
+        queryKey: ['test'],
+        queryFn: () => Promise.resolve(5),
+    })
 
     const formattedDate = dayjs(user?.merchant?.createdAt).format('MMMM YYYY');
 

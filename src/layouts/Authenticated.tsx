@@ -6,7 +6,7 @@ import { useShallow } from 'zustand/react/shallow';
 import TopBar from '@/layouts/topbar';
 
 const Authenticated: React.FC = () => {
-    const { user, setUser } = useUserStore(
+    const { user } = useUserStore(
         useShallow((state) => ({
             user: state.user,
             setUser: state.setUser,

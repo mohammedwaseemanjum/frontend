@@ -1,4 +1,4 @@
-import { useSibeBarContext, SideBarContextWrapper } from "@layout/sidebar/context"
+import { useSibeBarContext } from "@layout/sidebar/context"
 
 interface SideBarMenuI {
     children: React.ReactNode; 

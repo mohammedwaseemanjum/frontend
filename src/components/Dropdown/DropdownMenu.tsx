@@ -2,7 +2,7 @@ import { useDropdownContext } from "@component/Dropdown/context";
 import type { ReactNode } from "react";
 
 const DropdownMenu = ({ children }: { children: ReactNode }) => {
-    const { open, setOpen } = useDropdownContext("DropdownMenu");
+    const { open } = useDropdownContext("DropdownMenu");
 
     if (!open) return null;
 

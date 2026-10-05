@@ -32,7 +32,7 @@ const useRegisterAction = () => {
     const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
 
     const onSubmit:SubmitHandler<FormFields>= (data) => {
-        api.post('register', data).then((res) => {
+        api.post('register', data).then(() => {
             navigate('/')
         })
         .catch((error) => {
