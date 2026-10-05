@@ -3,7 +3,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { MapPin } from 'lucide-react';
 import { CalendarDays } from 'lucide-react';
 import dayjs from 'dayjs';
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 
 const Profile = () => {
     const { user } = useUserStore(
@@ -12,10 +12,10 @@ const Profile = () => {
         }))
     )
 
-    const { data } = useQuery({
-        queryKey: ['test'],
-        queryFn: () => Promise.resolve(5),
-    })
+    // const { data } = useQuery({
+    //     queryKey: ['test'],
+    //     queryFn: () => Promise.resolve(5),
+    // })
 
     const formattedDate = dayjs(user?.merchant?.createdAt).format('MMMM YYYY');
 

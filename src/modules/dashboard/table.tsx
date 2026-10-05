@@ -12,21 +12,6 @@ interface Person {
     isSelected?: boolean
 }
 
-const data: Array<Person> = [
-    {
-        id: 1,
-        firstName: 'test',
-        lastName: 'test123',
-        verified: false,
-    },
-    {
-        id: 2,
-        firstName: 'test2',
-        lastName: 'test1234',
-        verified: true,
-    }
-]
-
 const column: ColumnDefinitionType<Person>[] = [
     {
         key: 'id',
