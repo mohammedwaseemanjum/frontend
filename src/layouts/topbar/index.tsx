@@ -1,13 +1,27 @@
+import api from '@/utils/api';
 import { mergeClass } from '@/utils/tailwind';
 import { CircleUser } from 'lucide-react'
 import { User } from 'lucide-react';
 import { LogOut } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@contexts/auth.context';
+import { useUserStore } from '@/stores/user';
 
 const TopBar = () => {
     const navigate = useNavigate()
     const [open, setOpen] = useState<Boolean>(false)
+       const { logout } = useAuth();
+
+    const handleLogout = () => {
+        api.post('logout').then(() => {
+              useUserStore.persist.clearStorage()
+              logout()
+          }).catch(() => {
+            useUserStore.persist.clearStorage()
+              logout()
+          })
+    }
 
     return (
         <div className='flex flex-row pr-10 py-3 border-b border-gray-100'>
@@ -25,7 +39,7 @@ const TopBar = () => {
                     </div>
                     
                     <div className='p-3'>
-                        <div className="bg-red-400 rounded-md p-2 text-center cursor-pointer h-8.5 items-center justify-center flex flex-row" onClick={() => console.log(1)}>
+                        <div className="bg-red-400 rounded-md p-2 text-center cursor-pointer h-8.5 items-center justify-center flex flex-row" onClick={handleLogout}>
                             <LogOut size={20} color='white'/>
                             <span className="font-bold text-white text-sm ml-2">Logout</span>
                         </div>
