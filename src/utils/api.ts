@@ -45,7 +45,7 @@ import { useLoaderStore } from "@/stores/loader";
 
       response.data = humps.camelizeKeys(response.data);
 
-      return response.data;
+      return response;
     },
     (error: AxiosError): Promise<never> => {
       useLoaderStore.getState().decrementPending()
@@ -65,7 +65,7 @@ import { useLoaderStore } from "@/stores/loader";
       } else {
         console.error('Network Error: Please check your connection.');
       }
-      
+     
       return Promise.reject(error);
     }
   );

@@ -3,8 +3,11 @@ import { merchantForm, type FormFields } from "@modules/merchant/schema";
 import api from "@/utils/api";
 import { useShallow } from 'zustand/react/shallow';
 import { useUserStore } from "@/stores/user";
+import { useState } from "react";
 
 const useCreateAction = () => {
+    const [isPopupOpen, setIsPopupOpen] = useState<boolean>(true)
+
     const { setMerchant } = useUserStore(
         useShallow((state) => ({
             setMerchant: state.setMerchant,
@@ -38,6 +41,8 @@ const useCreateAction = () => {
         handleSubmit,
         onSubmit,
         control,
+        isPopupOpen,
+        setIsPopupOpen
     }
 }
 

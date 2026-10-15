@@ -31,11 +31,19 @@ interface Merchant {
   createdAt: string;
 }
 
+export const UserRole = {
+  Admin: "admin",
+  Merchant: "merchant",
+} as const;
+
+export type Role = typeof UserRole[keyof typeof UserRole];
+
 interface User {
   id?: number;
-  name?: string;
-  email?: string;
-  merchant?: Merchant
+  name: string;
+  email: string;
+  merchant: Merchant;
+  roles: Role[]
 }
 
 interface UserStateI {
@@ -51,7 +59,7 @@ export const useUserStore = create<UserStateI>()(
       setUser:<T> (user: T) => {
         set((state) => {
           if (user) {
-            state.user = user
+            state.user = user as WritableDraft<User>;
           }
         })
       },

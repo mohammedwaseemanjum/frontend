@@ -3,12 +3,14 @@ import DropdownForm from "@/components/Dropdown/DropdownForm";
 import FileUploadForm from "@/components/FileUpload";
 import useCreateAction from "@modules/merchant/actions/create.merchant";
 import useProcessAddressAction from "./actions/process.address";
+import { Popup } from "@/components/Popup";
 
 const Merchant = () => {
     const {
         control,
         onSubmit,
-        handleSubmit
+        handleSubmit,
+        isPopupOpen
     } = useCreateAction()
     
     const {
@@ -23,8 +25,13 @@ const Merchant = () => {
     } = useProcessAddressAction()
 
     return (
-        <div className="flex justify-center mt-[100px]">
-            <div className="flex flex-col gap-2 bg-white shadow-md rounded-md border border-gray-200 p-6">
+        <Popup
+            isOpen={isPopupOpen}
+            popUpContainerClass={'w-[1000px] h-[600px]'}
+        >
+            
+        <div className="flex justify-center items-center h-full">
+            <div className="flex flex-col gap-2">
                 <div className="mb-6">
                     <p className="text-2xl">Merchant Information</p>
                 </div>
@@ -96,6 +103,7 @@ const Merchant = () => {
                 </div>
             </div>
         </div>
+        </Popup>
     )
 }
 

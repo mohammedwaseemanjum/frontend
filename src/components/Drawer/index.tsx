@@ -10,7 +10,6 @@ import { drawerStyle } from "@component/Drawer/drawerStyle";
 
 interface DrawerContextValue {
     isOpen: boolean;
-    open: boolean;
     onClose: (open: boolean) => void;
 }
 
@@ -32,20 +31,18 @@ const useDrawerContext = (component: string): DrawerContextValue => {
 interface DrawerI {
     children: ReactNode,
     isOpen: boolean;
-    open: boolean;
     onClose: () => void;
     drawBodyClass?: string;
 }
 
 
-const Drawer = ({ isOpen, onClose, children, drawBodyClass, open }:DrawerI) => {
+const Drawer = ({ isOpen, onClose, children, drawBodyClass }:DrawerI) => {
     const value = useMemo<DrawerContextValue>(
         () => ({
             isOpen,
             onClose,
-            open
         }),
-        [isOpen, onClose, open],
+        [isOpen, onClose],
     );
 
     return (
@@ -83,17 +80,17 @@ interface DrawerHeaderI {
 }
 
 const DrawerHeader = ({ children }: DrawerHeaderI) => {
-    const {onClose, open} = useDrawerContext("DrawerHeader")
+    const { onClose, isOpen } = useDrawerContext("DrawerHeader")
 
     return (
         <div className="p-4 border-b border-gray-200 flex justify-between items-center">
             { children }
-          <button
-            onClick={() => onClose(!open)}
-            className="text-gray-500 hover:text-black text-2xl font-bold focus:outline-none"
-          >
-            &times;
-          </button>
+            <button
+                onClick={() => onClose(!isOpen)}
+                className="text-gray-500 hover:text-black text-2xl font-bold focus:outline-none"
+            >
+                &times;
+            </button>
         </div>
     )
 }

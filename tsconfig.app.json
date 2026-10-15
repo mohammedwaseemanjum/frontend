@@ -32,7 +32,8 @@
       "@component/*": ["./src/components/*"],
       "@utils/*": ["./src/utils/*"],
       "@stores/*": ["./src/stores/*"],
-      "@contexts/*": ["./src/contexts/*"]
+      "@contexts/*": ["./src/contexts/*"],
+      "@routes/*": ["./src/routes/*"]
     }
   },
   "include": ["src"]

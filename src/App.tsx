@@ -8,6 +8,9 @@ import { Navigate } from 'react-router-dom';
 import { useAuth, AuthProvider } from '@contexts/auth.context';
 import Register from '@modules/register';
 import Profile from '@modules/profile';
+import { useUserStore, UserRole } from './stores/user';
+import { useShallow } from 'zustand/shallow';
+import UserManagement from '@modules/user';
 
 const ProtectedRoute: React.FC = () => {
   const { isAuthenticated } = useAuth();
@@ -22,7 +25,27 @@ const ProtectedRoute: React.FC = () => {
   );
 };
 
+const RenderRoute = {
+  admin: (
+    <>
+      <Route path="user-management" element={<UserManagement />} />
+    </>
+  ),
+  merchant: (
+    <>
+      <Route path="/profile" element={<Profile />} />
+      <Route path="categories" element={<Dashboard />} />
+    </>
+  )
+}
+
 function App() {
+  const { user } = useUserStore(
+    useShallow((state) => ({
+      user: state.user,
+    }))
+  )
+
   return (
     <AuthProvider>
       <Routes>
@@ -30,8 +53,7 @@ function App() {
         <Route path='/register' element={<Register />} />
 
         <Route path="/" element={<ProtectedRoute />}>
-          <Route path="/categories" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
+          { RenderRoute[user?.roles?.[0] as keyof typeof RenderRoute] }
         </Route>
       </Routes>
     </AuthProvider>

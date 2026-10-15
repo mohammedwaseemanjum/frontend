@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface PopupProps {
   isOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   title?: string;
   children: React.ReactNode;
   popUpContainerClass?: string;
@@ -13,7 +13,7 @@ export const Popup: React.FC<PopupProps> = ({ isOpen, onClose, children, popUpCo
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -27,7 +27,7 @@ export const Popup: React.FC<PopupProps> = ({ isOpen, onClose, children, popUpCo
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.85, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className={mergeClass("relative w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-xl", popUpContainerClass)}
+            className={mergeClass("relative w-full h-screen overflow-hidden rounded-2xl bg-white shadow-xl", popUpContainerClass)}
           >
             { children }
           </motion.div>

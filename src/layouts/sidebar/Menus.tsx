@@ -2,18 +2,17 @@ import SideBarMenu from "@layout/sidebar/SideBarMenu"
 import { SideBarContextWrapper } from "@layout/sidebar/context"
 import SideBarChildren from "@layout/sidebar/SideBarChildren"
 import type { JSX } from "react";
-import dashboardMenus from '@modules/dashboard/sidebar'
 
 type Menus = {
     parent: JSX.Element
     childrens?: Array<JSX.Element> | undefined
 };
 
-const menus:Array<Menus> = [
-    dashboardMenus
-]
+interface MenuI {
+    menus: Array<Menus>
+}
 
-const Menus = () => {
+const Menus = ({ menus }: MenuI) => {
     return (
         <>
             { menus?.map((menu, index) => (
