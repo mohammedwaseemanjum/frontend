@@ -33,7 +33,7 @@ const DropdownForm = <T extends FieldValues,K extends Record<string, any>> ({
             <Dropdown>
                 <DropdownTrigger 
                     className={mergeClass(
-                        field.value ? 'justify-between' : undefined,
+                        field.value ? 'justify-between!' : undefined,
                         !error?.message || field?.value ? undefined : "border-red-500!",
                         'h-15'
                     )}

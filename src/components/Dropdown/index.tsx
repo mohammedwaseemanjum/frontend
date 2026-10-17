@@ -30,7 +30,7 @@ const Dropdown = ({ children }:DropdownProps) => {
 
     return (
         <DropdownContext.Provider value={value}>
-            <div className={`relative text-left`}>
+            <div className={`relative`}>
                 { children }
             </div>
         </DropdownContext.Provider>

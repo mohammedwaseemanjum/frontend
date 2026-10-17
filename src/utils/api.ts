@@ -17,7 +17,7 @@ import { useLoaderStore } from "@/stores/loader";
       'Content-Type': 'application/json',
     },
   });
-  
+
   api.interceptors.request.use(
     (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
       useLoaderStore.getState().incrementPending()

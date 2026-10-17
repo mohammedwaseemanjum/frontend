@@ -14,9 +14,4 @@ export const userOptions = {
       queryFn: () => fetchUsers(`limit=${limit}&cursor=${page}`),
       placeholderData: keepPreviousData,
     }),
-  // list: (filters: string) => 
-  //   queryOptions({
-  //     queryKey: userKeys.list(filters),
-  //     queryFn: () => fetchUsers(filters),
-  //   }),
 };

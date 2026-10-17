@@ -36,5 +36,5 @@
       "@routes/*": ["./src/routes/*"]
     }
   },
-  "include": ["src"]
+  "include": ["."]
 }

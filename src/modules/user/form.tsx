@@ -25,8 +25,8 @@ const Form = () => {
                 <DropdownForm 
                     displayName={'name'}
                     dropdowns={[{name: 'admin'}, {name: 'merchant'}]}
-                    handleSelect={(value) => setValue('role', value.name)}
-                    name={'role'}
+                    handleSelect={(value) => setValue('roles', value.name)}
+                    name={'roles'}
                     control={control}
                     label="Role"
                 />

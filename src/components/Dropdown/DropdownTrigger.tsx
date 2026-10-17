@@ -14,14 +14,14 @@ const DropdownTrigger = ({ children, className }: DropdownTriggerProps) => {
 
     return (
         <div 
-            className={mergeClass(style, className)} 
+            className={mergeClass(className, style)} 
             onClick={() => setOpen(!open)}
         >
             { children }
             <svg
                 aria-hidden="true"
                 viewBox="0 0 20 20"
-                className={`h-4 w-4 text-zinc-500 transition-transform duration-200 motion-reduce:transition-none ${
+                className={`ml-1 h-4 w-4 text-zinc-500 transition-transform duration-200 motion-reduce:transition-none ${
                     open ? "rotate-180" : ""
                 }`}
                 fill="none"

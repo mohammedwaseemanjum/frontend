@@ -1,5 +1,5 @@
 import Menus from '@layout/sidebar/Menus'
-import { CircleUser, User } from 'lucide-react'
+import { CircleUser } from 'lucide-react'
 import { useUserStore } from "@/stores/user";
 import { useShallow } from 'zustand/react/shallow';
 import currentRoute from '@/routes';

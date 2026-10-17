@@ -8,7 +8,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuth, AuthProvider } from '@contexts/auth.context';
 import Register from '@modules/register';
 import Profile from '@modules/profile';
-import { useUserStore, UserRole } from './stores/user';
+import { useUserStore } from './stores/user';
 import { useShallow } from 'zustand/shallow';
 import UserManagement from '@modules/user';
 

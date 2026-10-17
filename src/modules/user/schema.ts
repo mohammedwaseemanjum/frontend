@@ -6,7 +6,7 @@ const formSchema = yup.object({
     name: yup.string().required('Name is required.'),
     email: yup.string().email().required('Email is required'),
     password: yup.string().required('Password is required.'),
-    role: yup.string().required('Role is required.'),
+    roles: yup.string().required('Role is required.'),
 });
 
 export type FormFields = yup.InferType<typeof formSchema>;
